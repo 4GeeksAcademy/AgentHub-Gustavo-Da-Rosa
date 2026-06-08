@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="es" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AgentHub Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class"
+      };
+    </script>
+  </head>
+  <body class="h-full bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-white">
+    <aside class="w-64 fixed h-full bg-white dark:bg-slate-900 border-r border-slate-100 dark:border-slate-800 px-5 py-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div class="h-10 w-10 rounded-xl bg-violet-600 text-white grid place-items-center font-bold">A</div>
+        <div>
+          <p class="text-lg font-bold text-slate-900 dark:text-white">AgentHub</p>
+          <p class="text-xs text-slate-500 dark:text-slate-400">Panel de Administración</p>
+        </div>
+      </div>
+
+      <button class="w-full bg-violet-600 hover:bg-violet-700 text-white text-sm font-semibold py-2.5 px-4 rounded-xl shadow-sm shadow-violet-600/10 mb-7">
+        Nuevo Agente
+      </button>
+
+      <nav class="space-y-1" aria-label="Navegación principal">
+        <a href="#" data-target="dashboard" class="nav-link flex items-center px-3 py-2.5 rounded-xl text-sm font-medium transition bg-violet-600 text-white shadow-sm shadow-violet-600/10">Dashboard</a>
+        <a href="#" data-target="usuarios" class="nav-link flex items-center px-3 py-2.5 rounded-xl text-sm font-medium transition text-slate-500 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800">Gestión de Usuarios</a>
+        <a href="#" data-target="agentes" class="nav-link flex items-center px-3 py-2.5 rounded-xl text-sm font-medium transition text-slate-500 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800">Gestión de Agentes</a>
+        <a href="#" data-target="skills" class="nav-link flex items-center px-3 py-2.5 rounded-xl text-sm font-medium transition text-slate-500 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800">Catálogo de Skills</a>
+        <a href="#" data-target="contrataciones" class="nav-link flex items-center px-3 py-2.5 rounded-xl text-sm font-medium transition text-slate-500 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800">Contrataciones</a>
+        <a href="#" data-target="logs" class="nav-link flex items-center px-3 py-2.5 rounded-xl text-sm font-medium transition text-slate-500 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800">Logs de Error</a>
+      </nav>
+    </aside>
+
+    <main class="ml-64 p-8 bg-slate-50 dark:bg-slate-950 min-h-screen">
+      <header class="fixed top-0 left-64 right-0 z-40 border-b border-slate-100 dark:border-slate-800 bg-slate-50/95 dark:bg-slate-950/95 backdrop-blur px-8 py-4">
+        <div class="flex items-center justify-between gap-4">
+          <div class="flex items-center gap-4 w-full max-w-3xl">
+            <div class="flex items-center gap-3 w-full bg-slate-100 dark:bg-slate-800 rounded-full px-4 py-2.5">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5 text-slate-400">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-4.35-4.35m0 0A7.5 7.5 0 1 0 5.5 5.5a7.5 7.5 0 0 0 11.15 11.15Z" />
+              </svg>
+              <input type="text" placeholder="Buscar agentes, clientes o skills..." class="w-full bg-transparent text-sm outline-none placeholder:text-slate-400 text-slate-700 dark:text-slate-200" />
+            </div>
+            <div class="hidden md:flex items-center gap-3 text-sm">
+              <a href="#" class="text-slate-500 hover:text-violet-600 dark:text-slate-400 dark:hover:text-violet-400">Docs</a>
+              <a href="#" class="text-slate-500 hover:text-violet-600 dark:text-slate-400 dark:hover:text-violet-400">API</a>
+              <a href="#" class="text-slate-500 hover:text-violet-600 dark:text-slate-400 dark:hover:text-violet-400">Estado</a>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2.5">
+            <button id="theme-toggle" type="button" class="h-10 w-10 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 grid place-items-center" aria-label="Alternar modo oscuro">
+              <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0 1 18 15.75 9.75 9.75 0 0 1 8.25 6c0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25 9.75 9.75 0 0 0 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+              </svg>
+              <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5 hidden">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1.5m0 15V21m8.25-9H21m-18 0h1.5M18.364 5.636l-1.06 1.06M6.697 17.303l-1.06 1.06m0-12.727 1.06 1.06m10.607 10.607 1.06 1.06M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+              </svg>
+            </button>
+
+            <button type="button" class="h-10 w-10 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 grid place-items-center" aria-label="Notificaciones">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 0 1-5.714 0A8.966 8.966 0 0 1 9 15.75a6 6 0 1 1 12 0c0 .382-.036.756-.103 1.118Zm-5.714 0a24.255 24.255 0 0 0-1.103 3.255A2.25 2.25 0 0 0 10.25 21h3.5a2.25 2.25 0 0 0 2.21-2.663 24.255 24.255 0 0 0-1.103-3.255m-5.714 0h5.714" />
+              </svg>
+            </button>
+
+            <button type="button" class="h-10 w-10 rounded-full bg-violet-600 text-white font-semibold grid place-items-center" aria-label="Perfil de usuario">
+              GR
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <div class="pt-24 space-y-6">
+        <section id="dashboard" class="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl shadow-sm p-6">
+          <h1 class="text-2xl font-bold text-slate-900 dark:text-white">Dashboard</h1>
+          <p class="text-slate-500 dark:text-slate-400 mt-2">Vista principal del panel de control de AgentHub.</p>
+        </section>
+
+        <section id="usuarios" class="hidden bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl shadow-sm p-6">
+          <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Gestión de Usuarios</h2>
+          <p class="text-slate-500 dark:text-slate-400 mt-2">Sección base para administración de cuentas y planes.</p>
+        </section>
+
+        <section id="agentes" class="hidden bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl shadow-sm p-6">
+          <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Gestión de Agentes</h2>
+          <p class="text-slate-500 dark:text-slate-400 mt-2">Sección base para listado, configuración y estado de agentes.</p>
+        </section>
+
+        <section id="skills" class="hidden bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl shadow-sm p-6">
+          <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Catálogo de Skills</h2>
+          <p class="text-slate-500 dark:text-slate-400 mt-2">Sección base para gestionar skills disponibles en la plataforma.</p>
+        </section>
+
+        <section id="contrataciones" class="hidden bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl shadow-sm p-6">
+          <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Contrataciones</h2>
+          <p class="text-slate-500 dark:text-slate-400 mt-2">Sección base para historial de alquileres y facturación.</p>
+        </section>
+
+        <section id="logs" class="hidden bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl shadow-sm p-6">
+          <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Logs de Error</h2>
+          <p class="text-slate-500 dark:text-slate-400 mt-2">Sección base para monitoreo y resolución de incidencias.</p>
+        </section>
+      </div>
+    </main>
+
+    <script>
+      const html = document.documentElement;
+      const themeToggleButton = document.getElementById("theme-toggle");
+      const moonIcon = document.getElementById("icon-moon");
+      const sunIcon = document.getElementById("icon-sun");
+      const navLinks = Array.from(document.querySelectorAll(".nav-link"));
+      const sections = Array.from(document.querySelectorAll("main section"));
+
+      const activeLinkClasses = ["bg-violet-600", "text-white", "shadow-sm", "shadow-violet-600/10"];
+      const inactiveLinkClasses = [
+        "text-slate-500",
+        "hover:bg-slate-50",
+        "hover:text-slate-900",
+        "dark:text-slate-400",
+        "dark:hover:bg-slate-800"
+      ];
+
+      const applyThemeIcons = () => {
+        const isDark = html.classList.contains("dark");
+        moonIcon.classList.toggle("hidden", isDark);
+        sunIcon.classList.toggle("hidden", !isDark);
+      };
+
+      const savedTheme = localStorage.getItem("agenthub-theme");
+      if (savedTheme === "dark") {
+        html.classList.add("dark");
+      }
+      if (savedTheme === "light") {
+        html.classList.remove("dark");
+      }
+      applyThemeIcons();
+
+      themeToggleButton.addEventListener("click", () => {
+        html.classList.toggle("dark");
+        const currentTheme = html.classList.contains("dark") ? "dark" : "light";
+        localStorage.setItem("agenthub-theme", currentTheme);
+        applyThemeIcons();
+      });
+
+      const activateSection = (targetId) => {
+        sections.forEach((section) => {
+          section.classList.toggle("hidden", section.id !== targetId);
+        });
+
+        navLinks.forEach((link) => {
+          const isActive = link.dataset.target === targetId;
+          link.classList.remove(...activeLinkClasses, ...inactiveLinkClasses);
+
+          if (isActive) {
+            link.classList.add(...activeLinkClasses);
+          } else {
+            link.classList.add(...inactiveLinkClasses);
+          }
+        });
+      };
+
+      navLinks.forEach((link) => {
+        link.addEventListener("click", (event) => {
+          event.preventDefault();
+          activateSection(link.dataset.target);
+        });
+      });
+    </script>
+  </body>
+</html>
