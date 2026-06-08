@@ -76,34 +76,403 @@
       </header>
 
       <div class="pt-24 space-y-6">
-        <section id="dashboard" class="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl shadow-sm p-6">
-          <h1 class="text-2xl font-bold text-slate-900 dark:text-white">Dashboard</h1>
-          <p class="text-slate-500 dark:text-slate-400 mt-2">Vista principal del panel de control de AgentHub.</p>
+        <section id="dashboard" class="space-y-6">
+          <div>
+            <h1 class="text-2xl font-bold text-slate-900 dark:text-white">Dashboard</h1>
+            <p class="text-slate-500 dark:text-slate-400 mt-1">Resumen operativo y financiero de AgentHub.</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <article class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
+              <div class="flex items-start justify-between">
+                <div>
+                  <p class="text-slate-400 dark:text-slate-500 text-xs font-bold uppercase tracking-wider mb-1">Ingresos Totales</p>
+                  <p class="text-2xl font-bold text-slate-900 dark:text-white">$45,231.00</p>
+                </div>
+                <span class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 text-xs font-semibold px-2.5 py-1 rounded-xl">+12.5%</span>
+              </div>
+            </article>
+
+            <article class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
+              <div class="flex items-start justify-between">
+                <div>
+                  <p class="text-slate-400 dark:text-slate-500 text-xs font-bold uppercase tracking-wider mb-1">Pérdidas Netas</p>
+                  <p class="text-2xl font-bold text-slate-900 dark:text-white">$1,402.50</p>
+                </div>
+                <span class="bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 text-xs font-semibold px-2.5 py-1 rounded-xl">-2.4%</span>
+              </div>
+            </article>
+
+            <article class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
+              <div class="flex items-start justify-between">
+                <div>
+                  <p class="text-slate-400 dark:text-slate-500 text-xs font-bold uppercase tracking-wider mb-1">Agentes Activos</p>
+                  <p class="text-2xl font-bold text-slate-900 dark:text-white">1,204</p>
+                </div>
+                <span class="bg-violet-50 dark:bg-violet-950/40 text-violet-600 dark:text-violet-400 text-xs font-semibold px-2.5 py-1 rounded-xl">⚡ 89%</span>
+              </div>
+            </article>
+
+            <article class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
+              <div class="flex items-start justify-between">
+                <div>
+                  <p class="text-slate-400 dark:text-slate-500 text-xs font-bold uppercase tracking-wider mb-1">Agentes Fallidos</p>
+                  <p class="text-2xl font-bold text-slate-900 dark:text-white">12</p>
+                </div>
+                <span class="bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 text-xs font-semibold px-2.5 py-1 rounded-xl">Critical !</span>
+              </div>
+            </article>
+          </div>
+
+          <div class="bg-violet-50/30 dark:bg-slate-900/40 p-12 rounded-2xl border-2 border-dashed border-violet-200 dark:border-slate-800 flex flex-col items-center justify-center min-h-[220px]">
+            <p class="text-lg font-semibold text-slate-900 dark:text-white">Gráfico de Actividad Semanal</p>
+            <p class="text-sm text-slate-500 dark:text-slate-400 mt-1 text-center">Visualización dinámica de la carga de trabajo de los agentes</p>
+          </div>
         </section>
 
-        <section id="usuarios" class="hidden bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl shadow-sm p-6">
-          <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Gestión de Usuarios</h2>
-          <p class="text-slate-500 dark:text-slate-400 mt-2">Sección base para administración de cuentas y planes.</p>
+        <section id="usuarios" class="hidden space-y-4">
+          <div>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Gestión de Usuarios</h2>
+            <p class="text-slate-500 dark:text-slate-400 mt-1">Administración de clientes y planes SaaS activos.</p>
+          </div>
+
+          <div class="overflow-x-auto rounded-2xl border border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
+            <table class="min-w-full whitespace-nowrap">
+              <thead>
+                <tr class="bg-slate-50 dark:bg-slate-800/60">
+                  <th class="p-4 text-left text-xs font-bold text-slate-400">Nombre</th>
+                  <th class="p-4 text-left text-xs font-bold text-slate-400">Email</th>
+                  <th class="p-4 text-left text-xs font-bold text-slate-400">Plan</th>
+                  <th class="p-4 text-left text-xs font-bold text-slate-400">Estado</th>
+                  <th class="p-4 text-right text-xs font-bold text-slate-400">Acciones</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 dark:divide-slate-800 text-sm text-slate-700 dark:text-slate-300">
+                <tr>
+                  <td class="p-4 font-medium text-slate-900 dark:text-white">Carlos Mendoza</td>
+                  <td class="p-4">carlos.mendoza@novaedge.com</td>
+                  <td class="p-4"><span class="bg-violet-600 text-white text-xs px-2.5 py-1 rounded-lg font-semibold">Enterprise</span></td>
+                  <td class="p-4"><span class="inline-flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-emerald-500"></span>Activo</span></td>
+                  <td class="p-4 text-right"><button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-lg leading-none">⋮</button></td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-medium text-slate-900 dark:text-white">Elena Rodríguez</td>
+                  <td class="p-4">elena.rodriguez@lumenworks.io</td>
+                  <td class="p-4"><span class="bg-blue-100 text-blue-700 dark:bg-blue-950/40 dark:text-blue-400 text-xs px-2.5 py-1 rounded-lg font-semibold">Pro Plan</span></td>
+                  <td class="p-4"><span class="inline-flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-emerald-500"></span>Activo</span></td>
+                  <td class="p-4 text-right"><button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-lg leading-none">⋮</button></td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-medium text-slate-900 dark:text-white">Lucía Herrera</td>
+                  <td class="p-4">lucia.herrera@orbitbank.ai</td>
+                  <td class="p-4"><span class="bg-violet-600 text-white text-xs px-2.5 py-1 rounded-lg font-semibold">Enterprise</span></td>
+                  <td class="p-4"><span class="inline-flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-emerald-500"></span>Activo</span></td>
+                  <td class="p-4 text-right"><button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-lg leading-none">⋮</button></td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-medium text-slate-900 dark:text-white">Miguel Torres</td>
+                  <td class="p-4">miguel.torres@northgrid.co</td>
+                  <td class="p-4"><span class="bg-blue-100 text-blue-700 dark:bg-blue-950/40 dark:text-blue-400 text-xs px-2.5 py-1 rounded-lg font-semibold">Pro Plan</span></td>
+                  <td class="p-4"><span class="inline-flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-amber-500"></span>Suspendido</span></td>
+                  <td class="p-4 text-right"><button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-lg leading-none">⋮</button></td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-medium text-slate-900 dark:text-white">Sofía Navarro</td>
+                  <td class="p-4">sofia.navarro@quantixlabs.dev</td>
+                  <td class="p-4"><span class="bg-violet-600 text-white text-xs px-2.5 py-1 rounded-lg font-semibold">Enterprise</span></td>
+                  <td class="p-4"><span class="inline-flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-emerald-500"></span>Activo</span></td>
+                  <td class="p-4 text-right"><button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-lg leading-none">⋮</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </section>
 
-        <section id="agentes" class="hidden bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl shadow-sm p-6">
-          <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Gestión de Agentes</h2>
-          <p class="text-slate-500 dark:text-slate-400 mt-2">Sección base para listado, configuración y estado de agentes.</p>
+        <section id="agentes" class="hidden space-y-4">
+          <div>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Gestión de Agentes</h2>
+            <p class="text-slate-500 dark:text-slate-400 mt-1">Inventario de agentes por cliente y estado operativo.</p>
+          </div>
+
+          <div class="space-y-4">
+            <article class="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl shadow-sm p-5">
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <h3 class="font-semibold text-slate-900 dark:text-white">Astra Support</h3>
+                  <p class="text-sm text-slate-500 dark:text-slate-400">Cliente: Carlos Mendoza</p>
+                </div>
+                <div class="flex items-center gap-3">
+                  <span class="inline-flex items-center gap-2 rounded-full px-2.5 py-1 text-xs font-medium bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400"><span class="h-2 w-2 rounded-full bg-emerald-500"></span>Activo</span>
+                  <button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-lg leading-none">⋮</button>
+                </div>
+              </div>
+              <div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800">
+                <button class="text-sm text-violet-600 dark:text-violet-400 font-medium">Ver Skills ▾</button>
+                <div class="hidden mt-3 transition-all duration-300 ease-in-out">
+                  <div class="flex flex-wrap gap-2">
+                    <span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs px-2 py-0.5 rounded">Ticket Routing</span>
+                    <span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs px-2 py-0.5 rounded">Knowledge Search</span>
+                    <span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs px-2 py-0.5 rounded">Email Summary</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl shadow-sm p-5">
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <h3 class="font-semibold text-slate-900 dark:text-white">Orion Sales</h3>
+                  <p class="text-sm text-slate-500 dark:text-slate-400">Cliente: Elena Rodríguez</p>
+                </div>
+                <div class="flex items-center gap-3">
+                  <span class="inline-flex items-center gap-2 rounded-full px-2.5 py-1 text-xs font-medium bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400"><span class="h-2 w-2 rounded-full bg-emerald-500"></span>Activo</span>
+                  <button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-lg leading-none">⋮</button>
+                </div>
+              </div>
+              <div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800">
+                <button class="text-sm text-violet-600 dark:text-violet-400 font-medium">Ver Skills ▾</button>
+                <div class="hidden mt-3 transition-all duration-300 ease-in-out">
+                  <div class="flex flex-wrap gap-2">
+                    <span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs px-2 py-0.5 rounded">CRM Sync</span>
+                    <span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs px-2 py-0.5 rounded">Lead Scoring</span>
+                    <span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs px-2 py-0.5 rounded">Web Scraping</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl shadow-sm p-5">
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <h3 class="font-semibold text-slate-900 dark:text-white">Helix Ops</h3>
+                  <p class="text-sm text-slate-500 dark:text-slate-400">Cliente: Miguel Torres</p>
+                </div>
+                <div class="flex items-center gap-3">
+                  <span class="inline-flex items-center gap-2 rounded-full px-2.5 py-1 text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300"><span class="h-2 w-2 rounded-full bg-slate-400"></span>Inactivo</span>
+                  <button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-lg leading-none">⋮</button>
+                </div>
+              </div>
+              <div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800">
+                <button class="text-sm text-violet-600 dark:text-violet-400 font-medium">Ver Skills ▾</button>
+                <div class="hidden mt-3 transition-all duration-300 ease-in-out">
+                  <div class="flex flex-wrap gap-2">
+                    <span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs px-2 py-0.5 rounded">Calendar Planner</span>
+                    <span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs px-2 py-0.5 rounded">Report Generator</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl shadow-sm p-5">
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <h3 class="font-semibold text-slate-900 dark:text-white">Nexus Finance</h3>
+                  <p class="text-sm text-slate-500 dark:text-slate-400">Cliente: Lucía Herrera</p>
+                </div>
+                <div class="flex items-center gap-3">
+                  <span class="inline-flex items-center gap-2 rounded-full px-2.5 py-1 text-xs font-medium bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400"><span class="h-2 w-2 rounded-full bg-rose-500"></span>Fallando</span>
+                  <button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-lg leading-none">⋮</button>
+                </div>
+              </div>
+              <div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800">
+                <button class="text-sm text-violet-600 dark:text-violet-400 font-medium">Ver Skills ▾</button>
+                <div class="hidden mt-3 transition-all duration-300 ease-in-out">
+                  <div class="flex flex-wrap gap-2">
+                    <span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs px-2 py-0.5 rounded">Invoice Parser</span>
+                    <span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs px-2 py-0.5 rounded">Fraud Detection</span>
+                    <span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs px-2 py-0.5 rounded">Forecasting</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
         </section>
 
-        <section id="skills" class="hidden bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl shadow-sm p-6">
-          <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Catálogo de Skills</h2>
-          <p class="text-slate-500 dark:text-slate-400 mt-2">Sección base para gestionar skills disponibles en la plataforma.</p>
+        <section id="skills" class="hidden space-y-6">
+          <div class="bg-violet-50 dark:bg-violet-950/30 p-4 rounded-2xl border border-violet-100 dark:border-violet-900/50 text-sm text-violet-800 dark:text-violet-300">
+            Una skill es una capacidad modular que amplía el comportamiento de cada agente en AgentHub, permitiendo ejecutar tareas específicas como lectura documental, navegación web y sincronización operativa.
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <article class="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl shadow-sm p-5">
+              <div class="flex items-start justify-between gap-3">
+                <h3 class="font-semibold text-slate-900 dark:text-white">Knowledge Search</h3>
+                <button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-lg leading-none">⋮</button>
+              </div>
+              <p class="text-sm text-slate-500 dark:text-slate-400 mt-2">Recupera información contextual de documentos internos y FAQs corporativas.</p>
+              <p class="text-violet-600 dark:text-violet-400 font-semibold mt-4">Integrada en 38 agentes</p>
+            </article>
+
+            <article class="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl shadow-sm p-5">
+              <div class="flex items-start justify-between gap-3">
+                <h3 class="font-semibold text-slate-900 dark:text-white">CRM Sync</h3>
+                <button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-lg leading-none">⋮</button>
+              </div>
+              <p class="text-sm text-slate-500 dark:text-slate-400 mt-2">Sincroniza contactos, etapas de venta y notas de negocio en tiempo real.</p>
+              <p class="text-violet-600 dark:text-violet-400 font-semibold mt-4">Integrada en 24 agentes</p>
+            </article>
+
+            <article class="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl shadow-sm p-5">
+              <div class="flex items-start justify-between gap-3">
+                <h3 class="font-semibold text-slate-900 dark:text-white">Fraud Detection</h3>
+                <button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-lg leading-none">⋮</button>
+              </div>
+              <p class="text-sm text-slate-500 dark:text-slate-400 mt-2">Identifica anomalías financieras y patrones de riesgo en operaciones.</p>
+              <p class="text-violet-600 dark:text-violet-400 font-semibold mt-4">Integrada en 12 agentes</p>
+            </article>
+
+            <article class="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl shadow-sm p-5 md:col-span-3">
+              <div class="flex items-start justify-between gap-3">
+                <h3 class="font-semibold text-slate-900 dark:text-white">Calendar Planner</h3>
+                <button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-lg leading-none">⋮</button>
+              </div>
+              <p class="text-sm text-slate-500 dark:text-slate-400 mt-2">Agenda reuniones, bloques de trabajo y recordatorios con prioridad inteligente.</p>
+              <p class="text-violet-600 dark:text-violet-400 font-semibold mt-4">Integrada en 19 agentes</p>
+            </article>
+          </div>
         </section>
 
-        <section id="contrataciones" class="hidden bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl shadow-sm p-6">
-          <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Contrataciones</h2>
-          <p class="text-slate-500 dark:text-slate-400 mt-2">Sección base para historial de alquileres y facturación.</p>
+        <section id="contrataciones" class="hidden space-y-4">
+          <div>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Contrataciones de Agentes</h2>
+            <p class="text-slate-500 dark:text-slate-400 mt-1">Historial consolidado de alquileres por cliente y periodo.</p>
+          </div>
+
+          <div class="overflow-x-auto rounded-2xl border border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
+            <table class="min-w-full whitespace-nowrap">
+              <thead>
+                <tr class="bg-slate-50 dark:bg-slate-800/60">
+                  <th class="p-4 text-left text-xs font-bold text-slate-400">Cliente</th>
+                  <th class="p-4 text-left text-xs font-bold text-slate-400">Agente Alquilado</th>
+                  <th class="p-4 text-left text-xs font-bold text-slate-400">Skills Contratadas</th>
+                  <th class="p-4 text-left text-xs font-bold text-slate-400">Fechas del Contrato</th>
+                  <th class="p-4 text-left text-xs font-bold text-slate-400">Importe Total Pagado</th>
+                  <th class="p-4 text-right text-xs font-bold text-slate-400">Acciones</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 dark:divide-slate-800 text-sm text-slate-700 dark:text-slate-300">
+                <tr>
+                  <td class="p-4 font-medium text-slate-900 dark:text-white">Carlos Mendoza</td>
+                  <td class="p-4">Astra Support</td>
+                  <td class="p-4">
+                    <div class="flex flex-wrap gap-2">
+                      <span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs px-2 py-0.5 rounded">Ticket Routing</span>
+                      <span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs px-2 py-0.5 rounded">Knowledge Search</span>
+                    </div>
+                  </td>
+                  <td class="p-4">2026-04-01 - 2027-03-31</td>
+                  <td class="p-4 font-semibold text-slate-900 dark:text-white">$12,800.00</td>
+                  <td class="p-4 text-right"><button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-lg leading-none">⋮</button></td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-medium text-slate-900 dark:text-white">Elena Rodríguez</td>
+                  <td class="p-4">Orion Sales</td>
+                  <td class="p-4">
+                    <div class="flex flex-wrap gap-2">
+                      <span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs px-2 py-0.5 rounded">CRM Sync</span>
+                      <span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs px-2 py-0.5 rounded">Lead Scoring</span>
+                      <span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs px-2 py-0.5 rounded">Web Scraping</span>
+                    </div>
+                  </td>
+                  <td class="p-4">2026-02-15 - 2026-12-15</td>
+                  <td class="p-4 font-semibold text-slate-900 dark:text-white">$9,450.00</td>
+                  <td class="p-4 text-right"><button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-lg leading-none">⋮</button></td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-medium text-slate-900 dark:text-white">Miguel Torres</td>
+                  <td class="p-4">Helix Ops</td>
+                  <td class="p-4">
+                    <div class="flex flex-wrap gap-2">
+                      <span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs px-2 py-0.5 rounded">Calendar Planner</span>
+                      <span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs px-2 py-0.5 rounded">Report Generator</span>
+                    </div>
+                  </td>
+                  <td class="p-4">2026-01-10 - 2026-10-10</td>
+                  <td class="p-4 font-semibold text-slate-900 dark:text-white">$6,920.00</td>
+                  <td class="p-4 text-right"><button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-lg leading-none">⋮</button></td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-medium text-slate-900 dark:text-white">Lucía Herrera</td>
+                  <td class="p-4">Nexus Finance</td>
+                  <td class="p-4">
+                    <div class="flex flex-wrap gap-2">
+                      <span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs px-2 py-0.5 rounded">Invoice Parser</span>
+                      <span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs px-2 py-0.5 rounded">Fraud Detection</span>
+                      <span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs px-2 py-0.5 rounded">Forecasting</span>
+                    </div>
+                  </td>
+                  <td class="p-4">2026-03-01 - 2026-09-01</td>
+                  <td class="p-4 font-semibold text-slate-900 dark:text-white">$11,200.00</td>
+                  <td class="p-4 text-right"><button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-lg leading-none">⋮</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </section>
 
-        <section id="logs" class="hidden bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl shadow-sm p-6">
-          <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Logs de Error</h2>
-          <p class="text-slate-500 dark:text-slate-400 mt-2">Sección base para monitoreo y resolución de incidencias.</p>
+        <section id="logs" class="hidden space-y-4">
+          <div>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Log de Errores</h2>
+            <p class="text-slate-500 dark:text-slate-400 mt-1">Eventos recientes asociados a agentes en estado fallando.</p>
+          </div>
+
+          <div class="overflow-x-auto rounded-2xl border border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
+            <table class="min-w-full whitespace-nowrap">
+              <thead>
+                <tr class="bg-slate-50 dark:bg-slate-800/60">
+                  <th class="p-4 text-left text-xs font-bold text-slate-400">Timestamp</th>
+                  <th class="p-4 text-left text-xs font-bold text-slate-400">Nombre del Agente</th>
+                  <th class="p-4 text-left text-xs font-bold text-slate-400">Tipo de Error</th>
+                  <th class="p-4 text-left text-xs font-bold text-slate-400">Descripción Breve</th>
+                  <th class="p-4 text-right text-xs font-bold text-slate-400">Acciones</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 dark:divide-slate-800 text-sm text-slate-700 dark:text-slate-300">
+                <tr>
+                  <td class="p-4 font-mono text-xs text-slate-400">2026-06-08 09:15:11</td>
+                  <td class="p-4 font-medium text-slate-900 dark:text-white">Nexus Finance</td>
+                  <td class="p-4"><span class="bg-rose-100 text-rose-700 dark:bg-rose-950/60 dark:text-rose-400 px-2 py-0.5 rounded-full text-xs font-medium">Crítico</span></td>
+                  <td class="p-4">Timeout al consultar servicio externo de validación fiscal.</td>
+                  <td class="p-4 text-right"><button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-lg leading-none">⋮</button></td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-mono text-xs text-slate-400">2026-06-08 08:47:29</td>
+                  <td class="p-4 font-medium text-slate-900 dark:text-white">Nexus Finance</td>
+                  <td class="p-4"><span class="bg-amber-100 text-amber-700 dark:bg-amber-950/50 dark:text-amber-400 px-2 py-0.5 rounded-full text-xs font-medium">Advertencia</span></td>
+                  <td class="p-4">Latencia elevada en pipeline de clasificación de facturas.</td>
+                  <td class="p-4 text-right"><button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-lg leading-none">⋮</button></td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-mono text-xs text-slate-400">2026-06-07 22:11:02</td>
+                  <td class="p-4 font-medium text-slate-900 dark:text-white">Nexus Finance</td>
+                  <td class="p-4"><span class="bg-rose-100 text-rose-700 dark:bg-rose-950/60 dark:text-rose-400 px-2 py-0.5 rounded-full text-xs font-medium">Crítico</span></td>
+                  <td class="p-4">Fallo de autenticación del conector bancario OAuth2.</td>
+                  <td class="p-4 text-right"><button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-lg leading-none">⋮</button></td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-mono text-xs text-slate-400">2026-06-07 19:36:44</td>
+                  <td class="p-4 font-medium text-slate-900 dark:text-white">Nexus Finance</td>
+                  <td class="p-4"><span class="bg-amber-100 text-amber-700 dark:bg-amber-950/50 dark:text-amber-400 px-2 py-0.5 rounded-full text-xs font-medium">Advertencia</span></td>
+                  <td class="p-4">Reintentos automáticos agotados en módulo de Forecasting.</td>
+                  <td class="p-4 text-right"><button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-lg leading-none">⋮</button></td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-mono text-xs text-slate-400">2026-06-07 14:05:17</td>
+                  <td class="p-4 font-medium text-slate-900 dark:text-white">Nexus Finance</td>
+                  <td class="p-4"><span class="bg-rose-100 text-rose-700 dark:bg-rose-950/60 dark:text-rose-400 px-2 py-0.5 rounded-full text-xs font-medium">Crítico</span></td>
+                  <td class="p-4">Stack overflow en parser de documentos PDF corruptos.</td>
+                  <td class="p-4 text-right"><button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-lg leading-none">⋮</button></td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-mono text-xs text-slate-400">2026-06-07 10:22:53</td>
+                  <td class="p-4 font-medium text-slate-900 dark:text-white">Nexus Finance</td>
+                  <td class="p-4"><span class="bg-amber-100 text-amber-700 dark:bg-amber-950/50 dark:text-amber-400 px-2 py-0.5 rounded-full text-xs font-medium">Advertencia</span></td>
+                  <td class="p-4">Uso de memoria por encima del umbral en lote nocturno.</td>
+                  <td class="p-4 text-right"><button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-lg leading-none">⋮</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </section>
       </div>
     </main>
