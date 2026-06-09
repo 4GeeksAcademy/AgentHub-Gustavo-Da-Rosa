@@ -92,9 +92,40 @@
               <p class="text-2xl font-bold text-slate-900 dark:text-white mt-2">12</p>
             </article>
           </div>
-          <div class="bg-violet-50/30 dark:bg-slate-900/40 p-12 rounded-2xl border-2 border-dashed border-violet-200 dark:border-slate-800 flex flex-col items-center justify-center min-h-[220px]">
-            <p class="text-lg font-semibold text-slate-900 dark:text-white">Grafico de Actividad Semanal</p>
-            <p class="text-sm text-slate-500 dark:text-slate-400 mt-1 text-center">Visualizacion dinamica de la carga de trabajo de los agentes</p>
+          <div class="bg-violet-50/30 dark:bg-slate-900/40 p-8 rounded-2xl border-2 border-dashed border-violet-200 dark:border-slate-800 min-h-[220px]">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <p class="text-lg font-semibold text-slate-900 dark:text-white">Grafico de Actividad Semanal</p>
+                <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Carga hardcodeada de agentes de lunes a viernes</p>
+              </div>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-violet-100 text-violet-700 dark:bg-violet-900/40 dark:text-violet-300">Semana actual</span>
+            </div>
+            <div class="mt-8">
+              <div class="h-40 w-full rounded-xl bg-white/70 dark:bg-slate-900/70 border border-violet-100 dark:border-slate-800 p-4">
+                <div class="h-full flex items-end justify-between gap-4">
+                  <div class="flex flex-col items-center gap-2 w-full">
+                    <div class="w-full max-w-10 h-20 bg-violet-300 dark:bg-violet-500/60 rounded-t-lg"></div>
+                    <span class="text-xs text-slate-500 dark:text-slate-400">Lun</span>
+                  </div>
+                  <div class="flex flex-col items-center gap-2 w-full">
+                    <div class="w-full max-w-10 h-28 bg-violet-500 dark:bg-violet-400 rounded-t-lg"></div>
+                    <span class="text-xs text-slate-500 dark:text-slate-400">Mar</span>
+                  </div>
+                  <div class="flex flex-col items-center gap-2 w-full">
+                    <div class="w-full max-w-10 h-36 bg-violet-600 dark:bg-violet-300 rounded-t-lg"></div>
+                    <span class="text-xs text-slate-500 dark:text-slate-400">Mie</span>
+                  </div>
+                  <div class="flex flex-col items-center gap-2 w-full">
+                    <div class="w-full max-w-10 h-24 bg-violet-500 dark:bg-violet-400 rounded-t-lg"></div>
+                    <span class="text-xs text-slate-500 dark:text-slate-400">Jue</span>
+                  </div>
+                  <div class="flex flex-col items-center gap-2 w-full">
+                    <div class="w-full max-w-10 h-32 bg-violet-700 dark:bg-violet-200 rounded-t-lg"></div>
+                    <span class="text-xs text-slate-500 dark:text-slate-400">Vie</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -254,7 +285,15 @@
         closeDropdown();
       };
 
-      navLinks.forEach((link) => link.addEventListener("click", (event) => { event.preventDefault(); activateSection(link.dataset.target); }));
+      navLinks.forEach((link) => {
+        link.addEventListener("click", (event) => {
+          event.preventDefault();
+          activateSection(link.dataset.target);
+          if (mobileSidebar && window.matchMedia("(max-width: 767px)").matches) {
+            mobileSidebar.classList.add("hidden");
+          }
+        });
+      });
 
       if (menuToggleButton && mobileSidebar) {
         menuToggleButton.addEventListener("click", () => {
@@ -284,6 +323,52 @@
         return '<p class="text-slate-500 dark:text-slate-400">System Prompt editable del agente.</p><textarea class="w-full min-h-[220px] font-mono text-xs bg-slate-50 dark:bg-slate-950 p-4 rounded-xl text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 outline-none" spellcheck="false">' + prompt + '</textarea>';
       };
 
+      const detailSkill = (card) => {
+        const name = card.querySelector("h3").textContent.trim();
+        const details = {
+          "Knowledge Search": {
+            runtime: "180 ms",
+            tokens: "1,240 tokens/min",
+            permissions: "Lectura de base vectorial y documentos internos",
+            updated: "2026-05-28 11:34 UTC"
+          },
+          "CRM Sync": {
+            runtime: "240 ms",
+            tokens: "980 tokens/min",
+            permissions: "Acceso API CRM, escritura de contactos y oportunidades",
+            updated: "2026-06-01 09:12 UTC"
+          },
+          "Fraud Detection": {
+            runtime: "320 ms",
+            tokens: "1,860 tokens/min",
+            permissions: "Lectura de transacciones y reglas de riesgo",
+            updated: "2026-06-06 16:40 UTC"
+          },
+          "Calendar Planner": {
+            runtime: "150 ms",
+            tokens: "760 tokens/min",
+            permissions: "Lectura/escritura de calendario y notificaciones",
+            updated: "2026-05-30 14:05 UTC"
+          }
+        };
+        const meta = details[name] || {
+          runtime: "210 ms",
+          tokens: "1,000 tokens/min",
+          permissions: "Permisos estandar de integracion",
+          updated: "2026-06-01 00:00 UTC"
+        };
+
+        return '<div class="space-y-4">'
+          + '<p class="text-slate-500 dark:text-slate-400">Detalle tecnico de la skill <span class="font-semibold text-slate-900 dark:text-white">' + name + '</span>.</p>'
+          + '<ol class="space-y-2 text-sm text-slate-700 dark:text-slate-300">'
+          + '<li><span class="font-semibold text-slate-900 dark:text-white">1. Tiempo de ejecucion promedio:</span> ' + meta.runtime + '</li>'
+          + '<li><span class="font-semibold text-slate-900 dark:text-white">2. Consumo de tokens/minuto:</span> ' + meta.tokens + '</li>'
+          + '<li><span class="font-semibold text-slate-900 dark:text-white">3. Permisos requeridos del sistema:</span> ' + meta.permissions + '</li>'
+          + '<li><span class="font-semibold text-slate-900 dark:text-white">4. Historial de ultima actualizacion:</span> ' + meta.updated + '</li>'
+          + '</ol>'
+          + '</div>';
+      };
+
       const makeDropdown = (items) => {
         const menu = document.createElement("div");
         menu.className = "absolute right-0 mt-2 w-44 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-xl shadow-xl z-30 py-1 hidden";
@@ -299,6 +384,7 @@
           host.classList.add("relative");
           let items = [{ action: "view", label: "Ver detalle" }, { action: "delete", label: "Eliminar" }];
           if (sectionId === "agentes") items = [{ action: "config", label: "Configurar" }, { action: "delete", label: "Eliminar" }];
+          if (sectionId === "skills") items = [{ action: "view", label: "Ver detalle" }, { action: "delete", label: "Eliminar" }];
           if (sectionId === "logs") items = [{ action: "view", label: "Ver detalle" }, { action: "resolve", label: "Marcar como resuelto" }];
           const menu = makeDropdown(items);
           host.appendChild(menu);
@@ -323,6 +409,7 @@
             if (action === "view" && sectionId === "usuarios" && row) openModal("Detalle de Usuario", detailUser(row));
             if (action === "view" && sectionId === "contrataciones" && row) openModal("Detalle de Contrato", detailContract(row));
             if (action === "view" && sectionId === "logs" && row) openModal("Detalle de Error", detailLog(row));
+            if (action === "view" && sectionId === "skills" && card) openModal("Detalle de Skill", detailSkill(card));
             if (action === "config" && sectionId === "agentes" && card) openModal("Configurar " + card.querySelector("h3").textContent.trim(), detailAgentConfig(card));
             if (action === "resolve" && sectionId === "logs" && row) row.classList.add("opacity-40", "line-through");
             closeDropdown();
